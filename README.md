@@ -18,6 +18,15 @@ npm run dev:backend      # http://localhost:5000
 npm run dev:frontend     # http://localhost:5173  (proxies /api to :5000)
 ```
 
+## Deploy to Render
+The included `render.yaml` configures one Node web service that builds the frontend and serves it from the Express backend.
+
+1. Create a Render Blueprint from this repository and deploy the `arusuvai` web service.
+2. Provide `MONGODB_URI` when prompted, using a reachable MongoDB Atlas connection string. Ensure your Atlas network access rules allow connections from Render.
+3. Render generates `ADMIN_API_KEY` automatically. Set `CLIENT_URL` only if you later host the frontend on a separate domain.
+
+Render builds with `npm run install:all && npm run build`, starts with `npm start`, and checks `/healthz`.
+
 ## Structure
 ```
 backend/                     MVC
