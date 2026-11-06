@@ -1,0 +1,2 @@
+// Rotating "Quality ✦ Freshness ✦ Taste" seal shown on the Quality page.
+export const qualitySealHtml = `<svg viewBox="0 0 200 200"><defs><path id="scp" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1-156 0"/></defs><g class="sr"><text><textPath href="#scp">QUALITY ✦ FRESHNESS ✦ TASTE ✦ ARUSUVAI ✦ </textPath></text></g><circle cx="100" cy="100" r="52" fill="none" stroke="#D9A441" stroke-width="2"/><circle cx="100" cy="100" r="44" fill="#D9A441"/><path class="ck" pathLength="1" d="M78 102l16 16 30-34"/></svg><i class="sk"></i>`;

@@ -1,0 +1,4 @@
+/* Tailwind layers. Bespoke Arusuvai styles live in arusuvai.css (imported after this in main.jsx). */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
