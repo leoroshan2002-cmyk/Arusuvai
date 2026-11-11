@@ -11,9 +11,15 @@ import { notFound, errorHandler } from './middleware/errorHandler.js';
 const app = express();
 const frontendDist = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../frontend/dist');
 const frontendIndex = path.join(frontendDist, 'index.html');
+const allowedOrigins = [
+  'https://frontend-phi-red-1gmtxyppc3.vercel.app',
+  ...(process.env.CLIENT_URL || '').split(',').map((origin) => origin.trim()).filter(Boolean),
+];
+
+if (process.env.NODE_ENV !== 'production') allowedOrigins.push('http://localhost:5173');
 
 app.use(helmet({ crossOriginResourcePolicy: false }));
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json({ limit: '50kb' }));
 if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'));
 

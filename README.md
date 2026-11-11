@@ -23,9 +23,10 @@ The included `render.yaml` configures one Node web service that builds the front
 
 1. Create a Render Blueprint from this repository and deploy the `arusuvai` web service.
 2. Provide `MONGODB_URI` when prompted, using a reachable MongoDB Atlas connection string. Ensure your Atlas network access rules allow connections from Render.
-3. Render generates `ADMIN_API_KEY` automatically. Set `CLIENT_URL` only if you later host the frontend on a separate domain.
+3. Render generates `ADMIN_API_KEY` automatically. The deployed backend allows the configured Vercel frontend origin; set `CLIENT_URL` to add other allowed frontend origins (comma-separated if needed).
 
-Render builds with `npm run install:all && npm run build`, starts with `npm start`, and checks `/healthz`.
+Render builds with `npm run install:all && npm run build`, starts with `npm start`, and checks `/healthz`. If you configure commands manually in the Render dashboard, use that build command exactly; `npm build` is not a valid npm command.
+If the Render logs show `npm run dev`, update the service's **Start Command** to `npm start` and redeploy. The API binds its port before connecting to MongoDB and retries failed database connections; if Atlas rejects Render's IP, update the Atlas Network Access allowlist (or configure a static outbound IP) so database-backed routes can connect.
 
 ## Structure
 ```
