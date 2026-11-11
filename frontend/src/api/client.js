@@ -1,5 +1,6 @@
 // Tiny fetch wrapper. In dev, Vite proxies /api to the Express server (see vite.config.js).
-const BASE = import.meta.env.VITE_API_URL || '/api';
+const configuredBase = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
+const BASE = configuredBase.endsWith('/api') ? configuredBase : `${configuredBase}/api`;
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {

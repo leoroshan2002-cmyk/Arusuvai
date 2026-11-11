@@ -13,6 +13,7 @@ const frontendDist = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 
 const frontendIndex = path.join(frontendDist, 'index.html');
 const allowedOrigins = [
   'https://frontend-phi-red-1gmtxyppc3.vercel.app',
+  'https://arusuvaui.vercel.app',
   ...(process.env.CLIENT_URL || '').split(',').map((origin) => origin.trim()).filter(Boolean),
 ];
 
